@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ricardo | Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">Ricardo</div>
+    <nav id="navbar">
+      <ul>
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="contact me .html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <button id="theme-toggle">🌙</button>
+  </header>
+
+ <!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Hi, I'm <span>Ricardo</span> 👋</h1>
+    <p class="tagline">🚀 Full Stack Developer | Cloud Enthusiast | Cybersecurity Learner</p>
+    <p>
+      I love turning <span class="highlight">ideas into reality</span> through clean, efficient, and scalable code.  
+      With a passion for <strong>problem-solving</strong> and building user-friendly experiences,  
+      I aim to craft solutions that make a real impact in the digital world. 🌍
+    </p>
+    <div class="hero-buttons">
+      <a href="about.html" class="btn primary">Learn More</a>
+      <a href="project.html" class="btn secondary">View My Work</a>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="image/ricardo.png" alt="Ricardo">
+  </div>
+</section>
+
+<!-- Highlights Section -->
+<section class="highlights" id="highlights">
+  <h2 class="reveal">Why Work With Me?</h2>
+  <div class="cards">
+    <div class="card reveal">
+      <h3>💻 Front-End Excellence</h3>
+      <p>Crafting responsive, modern, and user-friendly interfaces using HTML, CSS, and JavaScript.</p>
+    </div>
+    <div class="card reveal">
+      <h3>⚡ Performance</h3>
+      <p>Optimized, fast-loading apps that deliver a smooth and reliable user experience.</p>
+    </div>
+    <div class="card reveal">
+      <h3>🎨 Design</h3>
+      <p>Clean UI/UX principles with attention to detail, ensuring every project feels professional.</p>
+    </div>
+    <div class="card reveal">
+      <h3>🔐 Security</h3>
+      <p>Cybersecurity-aware development to protect users and data at every step.</p>
+    </div>
+    <div class="card reveal">
+      <h3>☁️ Cloud Ready</h3>
+      <p>Building scalable apps with integration into modern cloud technologies.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Skills Section -->
+<section class="skills" id="skills">
+  <h2 class="reveal">🚀 My Core Skills</h2>
+  <p class="skills-intro reveal">A blend of technical expertise and creative problem-solving.</p>
+  <div class="skill-cards">
+    <div class="skill-card reveal">
+      <h3>💻 Frontend Development</h3>
+      <p>Building responsive, interactive, and modern UIs using HTML, CSS, and JavaScript.</p>
+    </div>
+    <div class="skill-card reveal">
+      <h3>⚙️ Backend Development</h3>
+      <p>Creating robust APIs and managing databases with security in mind.</p>
+    </div>
+    <div class="skill-card reveal">
+      <h3>☁ Cloud Computing</h3>
+      <p>Deploying scalable applications on modern cloud platforms like AWS, Azure, or GCP.</p>
+    </div>
+    <div class="skill-card reveal">
+      <h3>🔐 Cybersecurity</h3>
+      <p>Protecting applications and data from modern security threats.</p>
+    </div>
+  </div>
+</section>
+
+
+  
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Ricardo | Designed with Vision ✨</p>
+  </footer>
+
+  <!-- Back to Top -->
+  <button id="back-to-top">⬆️</button>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script>
+    // Menu Toggle
+    function toggleMenu() {
+      document.getElementById('navbar').classList.toggle('active');
+    }
+
+    // ScrollReveal Animations
+    ScrollReveal().reveal('.hero-content', { delay: 300, origin: 'bottom', distance: '50px', duration: 1000 });
+    ScrollReveal().reveal('.hero-img', { delay: 500, origin: 'right', distance: '50px', duration: 1000 });
+    ScrollReveal().reveal('.cards .card', { interval: 200, origin: 'bottom', distance: '50px', duration: 900 });
+    ScrollReveal().reveal('.skill-card', { interval: 150, origin: 'top', distance: '40px', duration: 900 });
+    ScrollReveal().reveal('h2', { delay: 150, origin: 'top', distance: '30px', duration: 800 });
+
+    // Theme Toggle
+    const themeToggle = document.getElementById("theme-toggle");
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("light");
+      themeToggle.textContent = document.body.classList.contains("light") ? "🌙" : "☀️";
+      localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
+    });
+
+    // Load saved theme
+    if (localStorage.getItem("theme") === "light") {
+      document.body.classList.add("light");
+      themeToggle.textContent = "🌙";
+    } else {
+      themeToggle.textContent = "☀️";
+    }
+  </script>
+</body>
+</html>

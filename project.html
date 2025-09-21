@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | Ricardo</title>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #fff;
+      min-height: 100vh;
+    }
+    a { color: #ffd700; text-decoration: none; transition: 0.3s; }
+    a:hover { color: #fff; }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo { font-size: 1.8rem; font-weight: bold; }
+    nav ul { display: flex; list-style: none; gap: 2rem; }
+    nav ul li a.active { font-weight: bold; border-bottom: 2px solid #ffd700; }
+    .menu-toggle { display: none; cursor: pointer; font-size: 1.8rem; }
+
+    /* Projects Section */
+    .projects {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 2rem;
+      text-align: center;
+    }
+    .projects h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #ffd700;
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    /* Project Card */
+    .project-card {
+      position: relative;
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      padding: 1rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer; /* indicates clickable */
+      overflow: hidden;
+    }
+    .project-card:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+    }
+    .project-card img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 1rem;
+      transition: transform 0.3s;
+    }
+    .project-card img:hover { transform: scale(1.05); }
+    .project-card h3 { margin-bottom: 0.5rem; color: #ffd700; }
+    .project-card p { font-size: 1rem; }
+
+    /* Hover Overlay */
+    .project-card .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0,0,0,0.6);
+      color: #ffd700;
+      font-weight: bold;
+      font-size: 1.2rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+      border-radius: 20px;
+    }
+    .project-card:hover .overlay { opacity: 1; }
+    .overlay::after { content: ' 🔍'; }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+    .modal-content {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 600px;
+      text-align: center;
+      position: relative;
+      color: #fff;
+    }
+    .modal-content img { width: 100%; border-radius: 15px; margin-bottom: 1rem; }
+    .modal-content h2 { margin-bottom: 1rem; color: #ffd700; }
+    .modal-content p { margin-bottom: 1rem; }
+    .modal-content .btn {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background: #ffd700;
+      color: #000;
+      border-radius: 15px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .modal-content .btn:hover { background: #e6c200; }
+    .close {
+      position: absolute;
+      top: 15px; right: 20px;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #ffd700;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      font-size: 1rem;
+      color: #ffd700;
+    }
+
+    @media(max-width:768px){
+      nav ul { display: none; flex-direction: column; gap: 1rem; }
+      nav.active ul { display: flex; }
+      .menu-toggle { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Ricardo</div>
+    <nav id="navbar">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="project.html" class="active">Projects</a></li>
+        <li><a href="contact me .html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <!-- Projects Section -->
+  <section class="projects">
+    <h2>My Projects 🚀</h2>
+    <div class="project-grid">
+      <div class="project-card" onclick="openProject('BankBrain', 'image/bankbrain.png', 'A smart banking solution for managing finances securely.', 'BankBrain/index.html')">
+        <img src="image/bankbrain.png" alt="BankBrain">
+        <div class="overlay">View Project</div>
+        <h3>BankBrain</h3>
+        <p>Smart banking solution for secure finance management.</p>
+      </div>
+
+      <div class="project-card" onclick="openProject('ExploreEase', 'image/exploreease.png', 'A travel guide platform for global explorers.', 'ExploreEase/signup.html')">
+        <img src="image/exploreease.png" alt="ExploreEase">
+        <div class="overlay">View Project</div>
+        <h3>ExploreEase</h3>
+        <p>Travel guide platform for global explorers.</p>
+      </div>
+
+      <div class="project-card" onclick="openProject('find-my-phone', 'image/find my phone.png', 'A location-based app to track lost devices in real-time.', 'FIND MY PHONE/find-my-phone/signup')">
+        <img src="image/find my phone.png" alt="Find My Phone">
+        <div class="overlay">View Project</div>
+        <h3>Find My Phone</h3>
+        <p>Track lost devices in real-time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="project-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="modal-title"></h2>
+      <img id="modal-img" src="" alt="">
+      <p id="modal-desc"></p>
+      <a id="modal-link" href="#" target="_blank" class="btn">View Demo</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Ricardo | Built with ❤️</p>
+  </footer>
+
+  <script>
+    function toggleMenu() { document.getElementById('navbar').classList.toggle('active'); }
+
+    ScrollReveal().reveal('.project-card', { interval: 200, origin: 'bottom', distance: '40px', duration: 900 });
+
+    function openProject(title, img, desc, link) {
+      document.getElementById('modal-title').innerText = title;
+      document.getElementById('modal-img').src = img;
+      document.getElementById('modal-desc').innerText = desc;
+      document.getElementById('modal-link').href = link;
+      document.getElementById('project-modal').style.display = 'flex';
+    }
+    function closeModal() { document.getElementById('project-modal').style.display = 'none'; }
+    window.onclick = function(event) {
+      if(event.target === document.getElementById('project-modal')) closeModal();
+    }
+  </script>
+</body>
+</html>
